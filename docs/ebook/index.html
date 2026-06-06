@@ -1,1 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia gratuito — 7 Cafés da Manhã para Emagrecer Sem Passar Fome</title>
+    <meta name="description" content="Receba gratuitamente o guia com 7 cafés da manhã para emagrecer com saúde, sem passar fome e sem dieta impossível.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A7C59;
+            --primary-dark: #2E5C3A;
+            --secondary: #6BAE7C;
+            --secondary-dark: #4E9060;
+            --bg: #FDFAF6;
+            --surface: #FFFFFF;
+            --input-bg: #F4EFE8;
+            --bege: #EFE9DE;
+            --bege-dark: #DDD3C4;
+            --text: #2A2A2A;
+            --text-muted: #666666;
+            --border: rgba(74, 124, 89, 0.15);
+            --accent: #4A7C59;
+            --white: #FFFFFF;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== TOPBAR ===== */
+        .topbar {
+            background: linear-gradient(135deg, #4A7C59, #7EAE8C);
+            text-align: center;
+            padding: 11px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            max-width: 580px;
+            margin: 0 auto;
+            padding: 20px 18px;
+            flex: 1;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            padding: 24px 0 20px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4A7C59, #7EAE8C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION CARD ===== */
+        .section-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 16px rgba(74, 124, 89, 0.07);
+        }
+
+        /* ===== BADGE ===== */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(74, 124, 89, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: clamp(1.55rem, 5vw, 1.95rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        h1 .highlight {
+            background: linear-gradient(135deg, #4A7C59, #7EAE8C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            font-size: 0.97rem;
+        }
+
+        /* ===== BENEFITS ===== */
+        .benefits {
+            list-style: none;
+            margin: 20px 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .benefit-num {
+            background: linear-gradient(135deg, #4A7C59, #7EAE8C);
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ===== DIVISOR ===== */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 22px 0;
+        }
+
+        /* ===== FORM ===== */
+        .form-group { margin-bottom: 14px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(107, 174, 124, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        /* PRESERVAR: campos ocultos de rastreio de origem */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6BAE7C, #4A7C59);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 6px;
+            box-shadow: 0 4px 18px rgba(74, 124, 89, 0.28);
+            letter-spacing: 0.2px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 24px rgba(74, 124, 89, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy {
+            font-size: 0.79rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        /* ===== SEÇÃO ENTREGA ===== */
+        #secao-entrega { display: none; }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #6BAE7C, #4A7C59);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 18px rgba(74, 124, 89, 0.3);
+        }
+
+        .badge-success {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(107, 174, 124, 0.12);
+            color: var(--secondary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6BAE7C, #4A7C59);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 13px;
+            box-shadow: 0 4px 18px rgba(74, 124, 89, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 24px rgba(74, 124, 89, 0.42);
+        }
+
+        .btn-next {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--primary);
+            border-radius: 10px;
+            font-size: 0.97rem;
+            font-weight: 700;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .btn-next:hover {
+            border-color: var(--secondary);
+            background: rgba(107, 174, 124, 0.07);
+        }
+
+        .delivery-tip {
+            background: var(--input-bg);
+            border-left: 3px solid var(--secondary);
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 22px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .delivery-tip strong {
+            color: var(--primary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeInUp 0.65s ease-out forwards; }
+
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            background: var(--bege);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        .disclaimer {
+            margin-top: 10px;
+            font-size: 0.72rem;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.45rem; }
+            .section-card { padding: 22px 18px; }
+            .container { padding: 16px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EDITAR AQUI: texto da barra de topo. -->
+    <div class="topbar">🌿 Material 100% gratuito — preencha abaixo e receba agora</div>
+
+    <div class="container">
+
+        <header>
+            <!-- EDITAR AQUI: nome da marca. -->
+            <div class="logo">🥗 Nutrição Sem Complicação</div>
+        </header>
+
+        <!-- ==================== SEÇÃO 1: CAPTURA ==================== -->
+        <div id="secao-captura" class="section-card fade-in">
+
+            <!-- EDITAR AQUI: badge, headline, subtítulo e benefícios da isca. -->
+            <div class="badge"><span class="dot"></span> Guia gratuito</div>
+
+            <h1>7 cafés da manhã para <span class="highlight">emagrecer sem passar fome</span></h1>
+
+            <p>Refeições simples, práticas e fáceis de manter — que você consegue colocar na sua rotina ainda esta semana, sem precisar largar tudo de uma vez.</p>
+
+            <ul class="benefits">
+                <li>
+                    <span class="benefit-num">1</span>
+                    <span>7 opções testadas para você variar a semana sem sofrimento.</span>
+                </li>
+                <li>
+                    <span class="benefit-num">2</span>
+                    <span>Refeições simples, rápidas e com ingredientes fáceis de encontrar.</span>
+                </li>
+                <li>
+                    <span class="benefit-num">3</span>
+                    <span>Um primeiro passo real para começar a emagrecer com saúde.</span>
+                </li>
+            </ul>
+
+            <hr class="divider">
+
+            <h2>Receba o guia agora</h2>
+            <p style="margin-bottom: 18px;">Preencha seus dados abaixo e receba o acesso imediato.</p>
+
+            <!-- ⚠️ PRESERVAR: APPS_SCRIPT_URL — troque apenas a URL do action. -->
+            <form id="form-captura"
+                  action="https://script.google.com/macros/s/AKfycbyFNvWGx4RawTAymxsnN9zw138d5rErGISprPfaWW6GL8MML63rfpfmcvGUGBuN-4OE/exec"
+                  method="POST">
+
+                <!-- PRESERVAR: nomes dos campos (nome, email, whatsapp, interesse, origem, pagina). -->
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (opcional)</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000">
+                </div>
+
+                <!-- EDITAR AQUI: opções do campo interesse conforme seu negócio. -->
+                <div class="form-group">
+                    <label for="interesse">O que mais te interessa? (opcional)</label>
+                    <select id="interesse" name="interesse">
+                        <option value="">Selecione uma opção</option>
+                        <option value="Emagrecer com saúde">Emagrecer com saúde</option>
+                        <option value="Montar uma rotina alimentar">Montar uma rotina alimentar</option>
+                        <option value="Parar de fazer dieta e desistir">Parar de fazer dieta e desistir</option>
+                        <option value="Acompanhamento nutricional">Acompanhamento nutricional</option>
+                    </select>
+                </div>
+
+                <!-- PRESERVAR: campos ocultos de rastreio. -->
+                <input type="hidden" name="origem" value="captura-guia">
+                <input type="hidden" name="pagina" value="index">
+
+                <button type="submit" class="btn-submit" id="btn-submit">
+                    Quero receber o guia gratuito
+                </button>
+
+                <p class="privacy">🔒 Seus dados estão seguros. Usados apenas para enviar o material.</p>
+            </form>
+        </div>
+
+        <!-- ==================== SEÇÃO 2: ENTREGA (oculta até o envio) ==================== -->
+        <div id="secao-entrega" class="section-card">
+
+            <!-- EDITAR AQUI: mensagem de confirmação, botão de download e próximo passo. -->
+            <div class="success-icon">✓</div>
+
+            <div style="text-align: center; margin-bottom: 22px;">
+                <span class="badge-success">✅ Material liberado</span>
+                <h1 style="font-size: 1.5rem; text-align: center;">Seu guia está pronto!</h1>
+                <p style="text-align: center; margin-top: 8px;">Clique no botão abaixo para baixar agora e começar hoje mesmo.</p>
+            </div>
+
+            <!-- PRESERVAR: configure MATERIAL_URL com o link real do material. -->
+            <!-- EDITAR AQUI: troque o href pelo link do seu arquivo no Drive ou outra plataforma. -->
+            <a href="https://drive.google.com/file/d/1E3lLDnf3Ou24d8mlg2I4MJNc9gI8tDng/view?usp=sharing"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-download"
+               id="btn-download">
+                ⬇️ Baixar meu guia agora
+            </a>
+
+            <!-- EDITAR AQUI: próximo passo do funil — link para aula gratuita, WhatsApp ou página de vendas. -->
+            <a href="../aula/" class="btn-next">
+                🎥 Ver a aula gratuita — 3 erros que travam o emagrecimento
+            </a>
+
+            <div class="delivery-tip">
+                💡 <strong>Dica:</strong> Salve o guia no seu celular para consultar na hora do café da manhã. Depois, assista à aula gratuita para entender os próximos passos para emagrecer com leveza.
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <!-- EDITAR AQUI: nome da marca, links e ano. -->
+        <p>© 2025 Nutrição Sem Complicação — Todos os direitos reservados.</p>
+        <p style="margin-top: 6px;">
+            <a href="#">Termos de Uso</a> ·
+            <a href="#">Política de Privacidade</a> ·
+            <a href="#">Contato</a>
+        </p>
+        <p class="disclaimer">Este material não garante a obtenção de resultados. Qualquer referência a resultados é baseada em experiências individuais e pode variar.</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT DE TRANSIÇÃO ==================== -->
+    <!-- PRESERVAR: lógica de envio, transição entre seções e APPS_SCRIPT_URL. -->
+    <script>
+        const form = document.getElementById('form-captura');
+        const btnSubmit = document.getElementById('btn-submit');
+        const secaoCaptura = document.getElementById('secao-captura');
+        const secaoEntrega = document.getElementById('secao-entrega');
+
+        // PRESERVAR: constante MATERIAL_URL para facilitar troca do link com IA.
+        const MATERIAL_URL = "https://drive.google.com/file/d/1E3lLDnf3Ou24d8mlg2I4MJNc9gI8tDng/view?usp=sharing";
+        document.getElementById('btn-download').href = MATERIAL_URL;
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const originalText = btnSubmit.textContent;
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner"></span> Enviando...';
+
+            const formData = new FormData(form);
+
+            try {
+                // PRESERVAR: envio para Apps Script com mode no-cors.
+                await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                });
+
+                // Transição suave: fade-out na captura → fade-in na entrega.
+                secaoCaptura.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                secaoCaptura.style.opacity = '0';
+                secaoCaptura.style.transform = 'translateY(-16px)';
+
+                setTimeout(() => {
+                    secaoCaptura.style.display = 'none';
+                    secaoEntrega.style.display = 'block';
+                    secaoEntrega.classList.add('fade-in');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 320);
+
+            } catch (error) {
+                console.error('Erro ao enviar:', error);
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = originalText;
+                alert('Ops! Houve um erro ao enviar. Tente novamente.');
+            }
+        });
+    </script>
+
+</body>
+</html>
