@@ -3,161 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página no Ar com IA - Crie, publique e altere suas páginas sem programação</title>
+    <title>Nutrição Sem Complicação — Emagreça com leveza e sem dieta maluca</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ===== RESET & BASE ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #7C3AED; --primary-light: #A78BFA; --primary-dark: #5B21B6;
-            --accent: #06D6A0; --accent-dark: #05B588;
-            --dark: #0F0F1A; --dark-light: #1A1A2E; --dark-card: #16162A;
-            --gray: #9CA3AF; --gray-light: #D1D5DB; --white: #FFFFFF;
-            --gradient-primary: linear-gradient(135deg, #7C3AED, #06D6A0);
-            --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.3);
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --primary: #4A7C59; --primary-light: #7EAE8C; --primary-dark: #2E5C3A;
+            --accent: #6BAE7C; --accent-dark: #4E9060;
+            --bg: #FDFAF6; --bg-card: #FFFFFF; --bg-soft: #F4EFE8;
+            --dark: #2A2A2A; --dark-light: #444444;
+            --gray: #888888; --gray-light: #666666; --white: #FFFFFF;
+            --bege: #EFE9DE; --bege-dark: #DDD3C4;
+            --gradient-primary: linear-gradient(135deg, #4A7C59, #7EAE8C);
+            --gradient-soft: linear-gradient(135deg, #F4EFE8, #FDFAF6);
+            --shadow-glow: 0 0 40px rgba(74, 124, 89, 0.15);
+            --shadow-card: 0 4px 24px rgba(74, 124, 89, 0.1);
         }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', Arial, Helvetica, sans-serif; background-color: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', Arial, Helvetica, sans-serif; background-color: var(--bg); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* ===== BACKGROUND ===== */
+        /* ===== BACKGROUND SUAVE ===== */
         .bg-orbs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-        .bg-orbs .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: floatOrb 20s ease-in-out infinite; }
-        .bg-orbs .orb:nth-child(1) { width: 500px; height: 500px; background: var(--primary); top: -100px; right: -100px; animation-delay: 0s; }
-        .bg-orbs .orb:nth-child(2) { width: 400px; height: 400px; background: var(--accent); bottom: -100px; left: -100px; animation-delay: -7s; }
-        .bg-orbs .orb:nth-child(3) { width: 300px; height: 300px; background: var(--primary-light); top: 50%; left: 50%; animation-delay: -14s; }
-        @keyframes floatOrb { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(50px, -50px) scale(1.1); } 66% { transform: translate(-30px, 30px) scale(0.9); } }
+        .bg-orbs .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.12; animation: floatOrb 24s ease-in-out infinite; }
+        .bg-orbs .orb:nth-child(1) { width: 500px; height: 500px; background: #7EAE8C; top: -100px; right: -100px; animation-delay: 0s; }
+        .bg-orbs .orb:nth-child(2) { width: 400px; height: 400px; background: #EFE9DE; bottom: -100px; left: -100px; animation-delay: -8s; }
+        .bg-orbs .orb:nth-child(3) { width: 300px; height: 300px; background: #4A7C59; top: 50%; left: 50%; animation-delay: -16s; }
+        @keyframes floatOrb { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(40px, -40px) scale(1.08); } 66% { transform: translate(-25px, 25px) scale(0.92); } }
 
         /* ===== TOPBAR & NAV ===== */
-        .urgency-bar { background: var(--gradient-primary); text-align: center; padding: 12px 20px; font-weight: 700; font-size: 14px; letter-spacing: 0.5px; position: relative; z-index: 10; }
+        .urgency-bar { background: var(--gradient-primary); text-align: center; padding: 12px 20px; font-weight: 700; font-size: 14px; letter-spacing: 0.5px; color: #fff; position: relative; z-index: 10; }
         .urgency-bar span { background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 4px; margin: 0 4px; font-family: monospace; font-size: 15px; }
-        .nav { position: sticky; top: 0; z-index: 100; background: rgba(15, 15, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.15); padding: 16px 0; }
+        .nav { position: sticky; top: 0; z-index: 100; background: rgba(253, 250, 246, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(74, 124, 89, 0.12); padding: 16px 0; }
         .nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: 20px; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .nav-cta { background: var(--accent); color: var(--dark); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.3s; }
-        .nav-cta:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4); }
+        .nav-logo { font-size: 18px; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-cta { background: var(--accent); color: var(--white); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74, 124, 89, 0.3); }
 
         /* ===== HERO ===== */
         .hero { position: relative; z-index: 1; padding: 80px 0 60px; text-align: center; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; color: var(--primary-light); margin-bottom: 32px; animation: fadeInDown 0.8s ease; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(74, 124, 89, 0.1); border: 1px solid rgba(74, 124, 89, 0.25); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 32px; animation: fadeInDown 0.8s ease; }
         .hero-badge .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
-        .hero h1 { font-size: clamp(32px, 5.5vw, 60px); font-weight: 900; line-height: 1.1; margin-bottom: 24px; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero h1 { font-size: clamp(30px, 5.5vw, 58px); font-weight: 900; line-height: 1.15; margin-bottom: 24px; color: var(--dark); animation: fadeInUp 0.8s ease 0.2s both; }
         .hero h1 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--gray-light); max-width: 700px; margin: 0 auto 40px; animation: fadeInUp 0.8s ease 0.4s both; }
+        .hero-sub { font-size: clamp(16px, 2vw, 19px); color: var(--gray-light); max-width: 680px; margin: 0 auto 40px; animation: fadeInUp 0.8s ease 0.4s both; }
         .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 16px; animation: fadeInUp 0.8s ease 0.6s both; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--dark); padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 18px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(6, 214, 160, 0.3); }
-        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.5); }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--white); padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 17px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(74, 124, 89, 0.3); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(74, 124, 89, 0.45); }
         .btn-primary .arrow { transition: transform 0.3s; }
         .btn-primary:hover .arrow { transform: translateX(4px); }
         .hero-trust { font-size: 13px; color: var(--gray); }
         .hero-trust svg { vertical-align: middle; margin-right: 4px; }
-        .free-class-card { position: relative; z-index: 1; max-width: 800px; margin: 60px auto 0; border-radius: 16px; border: 1px solid rgba(124, 58, 237, 0.3); box-shadow: var(--shadow-glow); animation: fadeInUp 0.8s ease 0.8s both; background: var(--dark-card); padding: 32px; text-align: left; display: grid; gap: 18px; }
-        .free-class-card h2 { font-size: clamp(22px, 4vw, 34px); line-height: 1.1; }
+
+        /* CARD de destaque do hero — adaptado como prova social rápida */
+        .free-class-card { position: relative; z-index: 1; max-width: 800px; margin: 60px auto 0; border-radius: 16px; border: 1px solid rgba(74, 124, 89, 0.2); box-shadow: var(--shadow-card); animation: fadeInUp 0.8s ease 0.8s both; background: var(--bg-card); padding: 32px; text-align: left; display: grid; gap: 18px; }
+        .free-class-card h2 { font-size: clamp(20px, 3.5vw, 28px); line-height: 1.2; color: var(--dark); }
         .free-class-card p { color: var(--gray-light); }
         .free-class-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-        .btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 13px 18px; color: var(--white); text-decoration: none; font-weight: 800; }
+        .btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid rgba(74, 124, 89, 0.3); border-radius: 12px; padding: 13px 18px; color: var(--primary); text-decoration: none; font-weight: 700; background: transparent; transition: all 0.3s; }
+        .btn-secondary:hover { background: rgba(74, 124, 89, 0.08); }
 
         /* ===== SECTIONS COMMON ===== */
         .pain-section, .solution-section, .modules-section, .benefits-section, .who-section, .testimonials-section, .bonuses-section, .pricing-section, .guarantee-section, .faq-section, .final-cta { position: relative; z-index: 1; padding: 80px 0; }
-        .section-label { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); margin-bottom: 16px; }
-        .section-title { font-size: clamp(26px, 4vw, 42px); font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .section-label { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 16px; }
+        .section-title { font-size: clamp(24px, 4vw, 40px); font-weight: 800; margin-bottom: 20px; line-height: 1.2; color: var(--dark); }
         .section-subtitle { font-size: 17px; color: var(--gray-light); max-width: 600px; margin-bottom: 48px; }
         .section-header { text-align: center; margin-bottom: 48px; }
         .section-header .section-subtitle { margin-left: auto; margin-right: auto; }
 
         /* ===== PAIN ===== */
         .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .pain-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; transition: all 0.3s; }
-        .pain-card:hover { border-color: rgba(239, 68, 68, 0.3); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(239, 68, 68, 0.1); }
+        .pain-card { background: var(--bg-card); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 32px; transition: all 0.3s; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .pain-card:hover { border-color: rgba(214, 90, 90, 0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(214, 90, 90, 0.08); }
         .pain-card .icon { font-size: 32px; margin-bottom: 16px; }
-        .pain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .pain-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
         .pain-card p { font-size: 15px; color: var(--gray); line-height: 1.6; }
 
         /* ===== SOLUTION ===== */
-        .solution-box { background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 214, 160, 0.1)); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 24px; padding: 60px 40px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .solution-box { background: linear-gradient(135deg, rgba(74, 124, 89, 0.08), rgba(239, 233, 222, 0.5)); border: 1px solid rgba(74, 124, 89, 0.2); border-radius: 24px; padding: 60px 40px; max-width: 800px; margin: 0 auto; text-align: center; }
         .solution-box .big-emoji { font-size: 56px; margin-bottom: 24px; }
-        .solution-box h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 16px; }
+        .solution-box h2 { font-size: clamp(22px, 3.5vw, 34px); font-weight: 800; margin-bottom: 16px; color: var(--dark); }
         .solution-box h2 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .solution-box p { font-size: 17px; color: var(--gray-light); max-width: 550px; margin: 0 auto; }
 
         /* ===== MODULES ===== */
         .module-list { display: flex; flex-direction: column; gap: 16px; max-width: 750px; margin: 0 auto; }
-        .module-item { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start; transition: all 0.3s; }
-        .module-item:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateX(8px); box-shadow: 0 4px 24px rgba(124, 58, 237, 0.1); }
-        .module-number { flex-shrink: 0; width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
-        .module-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+        .module-item { background: var(--bg-card); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start; transition: all 0.3s; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+        .module-item:hover { border-color: rgba(74, 124, 89, 0.3); transform: translateX(8px); box-shadow: 0 4px 24px rgba(74, 124, 89, 0.1); }
+        .module-number { flex-shrink: 0; width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff; }
+        .module-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
         .module-content p { font-size: 14px; color: var(--gray); line-height: 1.6; }
 
         /* ===== BENEFITS ===== */
         .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .benefit-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; text-align: center; transition: all 0.3s; }
-        .benefit-card:hover { border-color: rgba(6, 214, 160, 0.3); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.1); }
+        .benefit-card { background: var(--bg-card); border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 32px; text-align: center; transition: all 0.3s; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+        .benefit-card:hover { border-color: rgba(74, 124, 89, 0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(74, 124, 89, 0.1); }
         .benefit-card .icon { font-size: 40px; margin-bottom: 16px; }
-        .benefit-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .benefit-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
         .benefit-card p { font-size: 14px; color: var(--gray); }
 
         /* ===== WHO ===== */
         .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
-        .who-col h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .who-col h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; color: var(--dark); }
         .who-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
         .who-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; color: var(--gray-light); }
         .who-list li .check, .who-list li .cross { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
         .who-list li .check { color: var(--accent); }
-        .who-list li .cross { color: #EF4444; }
+        .who-list li .cross { color: #D65A5A; }
 
         /* ===== TESTIMONIALS ===== */
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .testimonial-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; transition: all 0.3s; }
-        .testimonial-card:hover { border-color: rgba(124, 58, 237, 0.3); }
-        .testimonial-stars { color: #FBBF24; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 32px; transition: all 0.3s; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+        .testimonial-card:hover { border-color: rgba(74, 124, 89, 0.25); }
+        .testimonial-stars { color: #F0A500; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
         .testimonial-text { font-size: 15px; color: var(--gray-light); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
         .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
-        .testimonial-name { font-weight: 700; font-size: 14px; }
+        .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #fff; }
+        .testimonial-name { font-weight: 700; font-size: 14px; color: var(--dark); }
         .testimonial-role { font-size: 12px; color: var(--gray); }
 
         /* ===== BONUSES ===== */
         .bonus-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
-        .bonus-card { background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 214, 160, 0.05)); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .bonus-card { background: linear-gradient(135deg, rgba(74, 124, 89, 0.07), rgba(239, 233, 222, 0.4)); border: 1px solid rgba(74, 124, 89, 0.2); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; transition: all 0.3s; }
         .bonus-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
-        .bonus-tag { display: inline-block; background: var(--accent); color: var(--dark); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
-        .bonus-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .bonus-tag { display: inline-block; background: var(--accent); color: var(--white); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
+        .bonus-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
         .bonus-card p { font-size: 14px; color: var(--gray); margin-bottom: 12px; }
-        .bonus-value { font-size: 13px; color: var(--primary-light); font-weight: 600; }
+        .bonus-value { font-size: 13px; color: var(--primary); font-weight: 600; }
         .bonus-value s { color: var(--gray); }
 
         /* ===== PRICING ===== */
         .pricing-section { text-align: center; }
-        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--dark-card); border: 2px solid var(--primary); border-radius: 24px; padding: 48px 40px; position: relative; box-shadow: var(--shadow-glow); }
-        .pricing-popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-primary); color: var(--white); font-size: 13px; font-weight: 700; padding: 6px 24px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--primary); border-radius: 24px; padding: 48px 40px; position: relative; box-shadow: var(--shadow-glow); }
+        .pricing-popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-primary); color: var(--white); font-size: 13px; font-weight: 700; padding: 6px 24px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
         .pricing-original { font-size: 16px; color: var(--gray); margin-bottom: 4px; }
-        .pricing-original s { font-size: 20px; color: #EF4444; }
+        .pricing-original s { font-size: 20px; color: #D65A5A; }
         .pricing-price { margin-bottom: 8px; }
-        .pricing-price .currency { font-size: 24px; font-weight: 700; vertical-align: top; line-height: 1.6; }
+        .pricing-price .currency { font-size: 24px; font-weight: 700; vertical-align: top; line-height: 1.6; color: var(--primary); }
         .pricing-price .amount { font-size: 64px; font-weight: 900; line-height: 1; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .pricing-installments { font-size: 15px; color: var(--gray-light); margin-bottom: 32px; }
         .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
         .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--gray-light); }
         .pricing-features li .check { color: var(--accent); font-size: 18px; }
-        .pricing-btn { display: block; width: 100%; padding: 18px; background: var(--accent); color: var(--dark); border: none; border-radius: 12px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s; text-decoration: none; text-align: center; box-shadow: 0 4px 24px rgba(6, 214, 160, 0.3); }
-        .pricing-btn:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.5); }
+        .pricing-btn { display: block; width: 100%; padding: 18px; background: var(--accent); color: var(--white); border: none; border-radius: 12px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.3s; text-decoration: none; text-align: center; box-shadow: 0 4px 24px rgba(74, 124, 89, 0.3); }
+        .pricing-btn:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(74, 124, 89, 0.45); }
         .pricing-guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--gray); }
         .pricing-guarantee svg { color: var(--accent); }
 
         /* ===== GUARANTEE ===== */
-        .guarantee-box { max-width: 700px; margin: 0 auto; background: var(--dark-card); border: 1px solid rgba(6, 214, 160, 0.2); border-radius: 20px; padding: 48px; display: flex; gap: 32px; align-items: center; }
+        .guarantee-box { max-width: 700px; margin: 0 auto; background: var(--bg-card); border: 1px solid rgba(74, 124, 89, 0.2); border-radius: 20px; padding: 48px; display: flex; gap: 32px; align-items: center; box-shadow: 0 2px 16px rgba(74,124,89,0.08); }
         .guarantee-icon { flex-shrink: 0; font-size: 64px; }
-        .guarantee-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--accent); }
+        .guarantee-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
         .guarantee-content p { font-size: 15px; color: var(--gray-light); line-height: 1.7; }
 
         /* ===== FAQ ===== */
         .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-        .faq-item { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-        .faq-item.active { border-color: rgba(124, 58, 237, 0.3); }
-        .faq-question { width: 100%; background: none; border: none; color: var(--white); padding: 20px 24px; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', Arial, Helvetica, sans-serif; }
-        .faq-question .faq-toggle { font-size: 22px; transition: transform 0.3s; color: var(--primary-light); }
+        .faq-item { background: var(--bg-card); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; transition: all 0.3s; box-shadow: 0 1px 8px rgba(0,0,0,0.03); }
+        .faq-item.active { border-color: rgba(74, 124, 89, 0.3); }
+        .faq-question { width: 100%; background: none; border: none; color: var(--dark); padding: 20px 24px; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', Arial, Helvetica, sans-serif; }
+        .faq-question .faq-toggle { font-size: 22px; transition: transform 0.3s; color: var(--primary); }
         .faq-item.active .faq-toggle { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
         .faq-item.active .faq-answer { max-height: 300px; }
@@ -165,65 +171,78 @@
 
         /* ===== FINAL CTA ===== */
         .final-cta { text-align: center; padding: 60px 0 80px; }
-        .final-cta-box { background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 214, 160, 0.1)); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 24px; padding: 60px 40px; max-width: 700px; margin: 0 auto; }
-        .final-cta-box h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 16px; }
+        .final-cta-box { background: linear-gradient(135deg, rgba(74, 124, 89, 0.1), rgba(239, 233, 222, 0.5)); border: 1px solid rgba(74, 124, 89, 0.2); border-radius: 24px; padding: 60px 40px; max-width: 700px; margin: 0 auto; }
+        .final-cta-box h2 { font-size: clamp(22px, 3.5vw, 34px); font-weight: 800; margin-bottom: 16px; color: var(--dark); }
+        .final-cta-box h2 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .final-cta-box p { font-size: 17px; color: var(--gray-light); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
 
         /* ===== FOOTER ===== */
-        .footer { position: relative; z-index: 1; text-align: center; padding: 40px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer { position: relative; z-index: 1; text-align: center; padding: 40px 0; border-top: 1px solid rgba(74, 124, 89, 0.1); background: var(--bg-soft); }
         .footer p { font-size: 13px; color: var(--gray); }
-        .footer a { color: var(--primary-light); text-decoration: none; }
-        .footer .disclaimer { margin-top: 16px; font-size: 11px; color: #6B7280; }
+        .footer a { color: var(--primary); text-decoration: none; }
+        .footer .disclaimer { margin-top: 16px; font-size: 11px; color: #AAA; }
 
-        /* ===== ANIMATIONS & RESPONSIVE ===== */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        /* ===== ANIMATIONS ===== */
+        .fade-in { opacity: 0; transform: translateY(28px); transition: all 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .who-grid { grid-template-columns: 1fr; }
             .guarantee-box { flex-direction: column; text-align: center; padding: 32px; }
-            .pricing-card { padding: 36px 24px; }
+            .pricing-card { padding: 36px 20px; }
             .pricing-price .amount { font-size: 52px; }
             .hero { padding: 60px 0 40px; }
-            .solution-box, .final-cta-box { padding: 40px 24px; }
-            .module-item { padding: 20px; }
+            .solution-box, .final-cta-box { padding: 40px 20px; }
+            .module-item { padding: 20px; flex-direction: column; gap: 12px; }
+            .module-item:hover { transform: none; }
             .urgency-bar { font-size: 12px; }
+            .nav-logo { font-size: 15px; }
         }
-        @media (max-width: 480px) { .benefits-grid, .pain-grid, .testimonials-grid, .bonus-cards { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) {
+            .benefits-grid, .pain-grid, .testimonials-grid, .bonus-cards { grid-template-columns: 1fr; }
+            .btn-primary { font-size: 15px; padding: 16px 28px; }
+            .free-class-card { padding: 24px 18px; }
+            .free-class-actions { flex-direction: column; }
+            .free-class-actions .btn-primary, .free-class-actions .btn-secondary { width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
     <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 
-    <div class="urgency-bar">🔥 Vagas limitadas — Preço especial expira em <span id="countdown">23:59:47</span></div>
+    <!-- PRESERVAR: barra de urgência com contagem regressiva. -->
+    <div class="urgency-bar">🌿 Vagas limitadas — Condição especial expira em <span id="countdown">23:59:47</span></div>
 
     <nav class="nav">
         <div class="container">
             <!-- EDITAR AQUI: nome da marca e CTA do topo. -->
-            <div class="nav-logo">🚀 Página no Ar com IA</div>
-            <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="nav-cta sales-link">Quero Começar Agora</a>
+            <div class="nav-logo">🥗 Nutrição Sem Complicação</div>
+            <a href="https://wa.me/55SEUNUMERO" class="nav-cta sales-link">Quero Começar</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <!-- EDITAR AQUI: urgência, badge, headline, subtítulo, CTA principal e card da aula gratuita. -->
-            <div class="hero-badge"><span class="dot"></span> Método atualizado para 2025</div>
-            <h1>Coloque seu produto <span class="highlight">online com IA</span> sem programação e sem depender de ninguém.</h1>
-            <p class="hero-sub">Aprenda a criar, publicar e alterar páginas de venda, captura, bio, aula gratuita e lista de espera usando linguagem simples e IA.</p>
+            <!-- EDITAR AQUI: urgência, badge, headline, subtítulo e CTA principal. -->
+            <div class="hero-badge"><span class="dot"></span> Acompanhamento personalizado e gentil</div>
+            <h1>Emagreça com leveza e <span class="highlight">sem dieta maluca</span> — com um plano que você realmente consegue seguir.</h1>
+            <p class="hero-sub">Chega de recomeçar toda segunda-feira. Com o Programa Nutrição Sem Complicação você tem um plano alimentar feito pra sua rotina, acompanhamento semanal e suporte para não desistir desta vez.</p>
             <div class="hero-cta-group">
-                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">Quero Criar Minha Página com IA <span class="arrow">→</span></a>
-                <p class="hero-trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Acesso ao curso · Garantia de 7 dias · Bônus incluídos</p>
+                <a href="https://wa.me/55SEUNUMERO" class="btn-primary sales-link">Quero começar meu acompanhamento <span class="arrow">→</span></a>
+                <p class="hero-trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Plano alimentar · Suporte semanal · Sem dieta impossível</p>
             </div>
+            <!-- EDITAR AQUI: card de reforço da promessa logo abaixo do CTA principal. -->
             <div class="free-class-card">
-                <span class="section-label">Quer ver antes?</span>
-                <h2>Assista à aula gratuita e teste seu primeiro código HTML.</h2>
-                <p>Na aula gratuita você vê a ideia na prática e pode colar o código criado pela IA para visualizar sua página.</p>
+                <span class="section-label">Você não está sozinha nessa</span>
+                <h2>Emagrecer não precisa ser sofrimento — precisa ser possível pra você.</h2>
+                <p>O programa foi criado especialmente para mulheres que já tentaram de tudo, mas nunca tiveram um acompanhamento próximo e um plano que realmente encaixa na vida real. Vamos caminhar juntas.</p>
                 <div class="free-class-actions">
-                    <a href="../aula-gratuita/" class="btn-secondary">Assistir aula gratuita</a>
-                    <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">Ir para inscrição <span class="arrow">→</span></a>
+                    <a href="#pricing" class="btn-secondary">Ver o que está incluído</a>
+                    <a href="https://wa.me/55SEUNUMERO" class="btn-primary sales-link">Falar no WhatsApp <span class="arrow">→</span></a>
                 </div>
             </div>
         </div>
@@ -233,15 +252,15 @@
         <div class="container">
             <!-- EDITAR AQUI: dores principais do seu público. -->
             <span class="section-label">Você se identifica?</span>
-            <h2 class="section-title">O que está te impedindo de lançar seu produto?</h2>
-            <p class="section-subtitle">Se você já travou em alguma dessas situações, esse curso foi feito pra você.</p>
+            <h2 class="section-title">Por que fica tão difícil manter o resultado?</h2>
+            <p class="section-subtitle">Se você já passou por alguma dessas situações, esse programa foi feito para você.</p>
             <div class="pain-grid">
-                <div class="pain-card fade-in"><div class="icon">💸</div><h3>Gastando fortunas com freelancers</h3><p>Cada alteração custa caro. Você depende de alguém com agenda lotada e demora pra responder.</p></div>
-                <div class="pain-card fade-in"><div class="icon">😵</div><h3>Perdido com códigos e plataformas</h3><p>Códigos, ferramentas e configurações parecem outro idioma. E cada erro vira uma dor de cabeça.</p></div>
-                <div class="pain-card fade-in"><div class="icon">⏳</div><h3>Semanas pra colocar uma página no ar</h3><p>Você tem uma ideia, mas a execução demora tanto que a motivação some. O produto nunca sai do papel.</p></div>
-                <div class="pain-card fade-in"><div class="icon">🔄</div><h3>Impossível testar e otimizar rápido</h3><p>Você sabe que precisa mudar o título, a cor, a oferta... mas alterar a página é um projeto inteiro.</p></div>
-                <div class="pain-card fade-in"><div class="icon">🔒</div><h3>Preso em ferramentas caras</h3><p>Mensalidades que somam R$200, R$300/mês. E você usa 10% do recurso.</p></div>
-                <div class="pain-card fade-in"><div class="icon">😰</div><h3>Medo de errar e perder dinheiro</h3><p>Sem experiência, tem medo de investir. E sem testar rápido, nunca vai saber o que funciona.</p></div>
+                <div class="pain-card fade-in"><div class="icon">🔄</div><h3>Começa bem, mas desiste rápido</h3><p>Na primeira semana tudo vai bem. Mas qualquer imprevisto derruba a dieta e você volta ao começo.</p></div>
+                <div class="pain-card fade-in"><div class="icon">🥗</div><h3>Dietas impossíveis de seguir</h3><p>Cardápios que não cabem na sua rotina, comidas que você não gosta ou restrições extremas demais.</p></div>
+                <div class="pain-card fade-in"><div class="icon">⏰</div><h3>Sem tempo para se dedicar</h3><p>Entre trabalho, filhos e compromissos, parece que cuidar da alimentação vira o último da lista.</p></div>
+                <div class="pain-card fade-in"><div class="icon">😔</div><h3>Já tentei de tudo e não funciona</h3><p>Você já fez dieta, tentou reeducação, usou app, mas nada parece encaixar na sua vida de verdade.</p></div>
+                <div class="pain-card fade-in"><div class="icon">📉</div><h3>Perde peso e recupera depois</h3><p>Quando consegue emagrecer, logo o peso volta. A sensação é de que o esforço nunca compensa.</p></div>
+                <div class="pain-card fade-in"><div class="icon">🫂</div><h3>Sem ninguém para te apoiar</h3><p>Fica sozinha com a dieta, sem orientação profissional e sem ninguém para ajustar quando as coisas fogem do plano.</p></div>
             </div>
         </div>
     </section>
@@ -250,64 +269,64 @@
         <div class="container">
             <!-- EDITAR AQUI: promessa da solução e transformação desejada. -->
             <div class="solution-box fade-in">
-                <div class="big-emoji">✨</div>
-                <h2>E se você pudesse criar qualquer página <span class="highlight">em minutos</span>, de graça, usando apenas a IA?</h2>
-                <p>Sem precisar aprender programação. Você digita o que quer em português simples e a IA ajuda a construir, publicar e ajustar sua página.</p>
+                <div class="big-emoji">🌿</div>
+                <h2>E se você tivesse um plano <span class="highlight">feito pra sua vida</span>, com alguém do seu lado para ajustar quando precisar?</h2>
+                <p>Sem proibições absurdas, sem recomeçar toda semana. Só uma rotina alimentar possível, acompanhamento próximo e o resultado que você merece — com leveza e sem culpa.</p>
             </div>
         </div>
     </section>
 
-    <!-- MÓDULOS ATUALIZADOS -->
+    <!-- MÓDULOS / O QUE VOCÊ RECEBE -->
     <section class="modules-section">
         <div class="container">
-            <!-- EDITAR AQUI: módulos, bônus, títulos e descrições do que a pessoa vai aprender. -->
+            <!-- EDITAR AQUI: o que a pessoa recebe no programa, títulos e descrições. -->
             <div class="section-header">
-                <span class="section-label">Conteúdo do curso</span>
-                <h2 class="section-title">O que você vai aprender (e colocar no ar em minutos)</h2>
-                <p class="section-subtitle">Do zero a uma página pronta para divulgar. Só você, a IA e sua linguagem escrita. Zero complicação.</p>
+                <span class="section-label">O que você recebe</span>
+                <h2 class="section-title">Tudo que você precisa para emagrecer de verdade</h2>
+                <p class="section-subtitle">Sem complicação, sem sofrimento. Só o que funciona — com acompanhamento real do início ao fim.</p>
             </div>
 
             <div class="module-list">
                 <div class="module-item fade-in">
                     <div class="module-number">01</div>
                     <div class="module-content">
-                        <h3>Fundamentos: IA + Linguagem Simples</h3>
-                        <p>Aprenda a "conversar" com a IA. Você explica sua ideia em texto simples e recebe uma página inicial para ajustar.</p>
+                        <h3>Plano Alimentar Personalizado</h3>
+                        <p>Um cardápio feito especialmente para você: sua rotina, suas preferências e seus objetivos. Sem copiar e colar do Google.</p>
                     </div>
                 </div>
                 <div class="module-item fade-in">
                     <div class="module-number">02</div>
                     <div class="module-content">
-                        <h3>Página Link/Bio (Estilo Linktree)</h3>
-                        <p>Crie uma página de links profissional e rápida. Adicione botões para produtos, WhatsApp e redes sociais.</p>
+                        <h3>Acompanhamento Online Próximo</h3>
+                        <p>Você não fica sozinha. Acompanhamento via WhatsApp ou plataforma, com contato direto para tirar dúvidas e receber incentivo.</p>
                     </div>
                 </div>
                 <div class="module-item fade-in">
                     <div class="module-number">03</div>
                     <div class="module-content">
-                        <h3>Página de Captura com Isca Digital</h3>
-                        <p>Monte uma página simples oferecendo seu PDF, e-book ou checklist. A IA ajuda com texto, estrutura e chamada principal.</p>
+                        <h3>Ajustes Semanais do Plano</h3>
+                        <p>Sua vida muda, o plano acompanha. Toda semana avaliamos o que funcionou e ajustamos o que precisar para você continuar evoluindo.</p>
                     </div>
                 </div>
                 <div class="module-item fade-in">
                     <div class="module-number">04</div>
                     <div class="module-content">
-                        <h3>Página de Vendas Completa</h3>
-                        <p>Título, dor, solução, oferta, garantia e CTA. Tudo ajustado com comandos de texto. Mude preços, cores ou seções com autonomia.</p>
+                        <h3>Suporte Contínuo para Não Desistir</h3>
+                        <p>Quando o dia foi pesado, quando bateu a vontade de desistir — você tem suporte. Isso faz toda a diferença entre quem mantém e quem recomeça.</p>
                     </div>
                 </div>
-                <div class="module-item fade-in" style="border-color: rgba(6, 214, 160, 0.4); background: linear-gradient(135deg, rgba(6, 214, 160, 0.05), transparent);">
-                    <div class="module-number" style="background: linear-gradient(135deg, #06D6A0, #7C3AED);">🎁</div>
+                <div class="module-item fade-in" style="border-color: rgba(74, 124, 89, 0.35); background: linear-gradient(135deg, rgba(74, 124, 89, 0.06), transparent);">
+                    <div class="module-number" style="background: linear-gradient(135deg, #4A7C59, #7EAE8C);">🎁</div>
                     <div class="module-content">
-                        <h3>BÔNUS: Página de Aula Gratuita</h3>
-                        <p>Crie uma página para divulgar sua aula gratuita, colocar o link da aula e levar a pessoa para o próximo passo.</p>
+                        <h3>BÔNUS: Checklist de Compras Saudáveis</h3>
+                        <p>Lista completa para você ir ao mercado sem perder tempo e sem comprar o que não faz bem. Simples e prático para o dia a dia.</p>
                     </div>
                 </div>
-                <div class="module-item fade-in" style="border-color: rgba(6, 214, 160, 0.4); background: linear-gradient(135deg, rgba(6, 214, 160, 0.05), transparent);">
-                    <div class="module-number" style="background: linear-gradient(135deg, #06D6A0, #7C3AED);">🎁</div>
+                <div class="module-item fade-in" style="border-color: rgba(74, 124, 89, 0.35); background: linear-gradient(135deg, rgba(74, 124, 89, 0.06), transparent);">
+                    <div class="module-number" style="background: linear-gradient(135deg, #4A7C59, #7EAE8C);">🎁</div>
                     <div class="module-content">
-                        <h3>BÔNUS: Página de Lista de Espera</h3>
-                        <p>Capture interessados antes do lançamento oficial e prepare seu público com uma página simples de espera.</p>
+                        <h3>BÔNUS: Guia de Lanches e Cardápio de 7 Dias</h3>
+                        <p>Sugestões de lanches práticos para não cair na tentação e um cardápio completo para a primeira semana começar com segurança.</p>
                     </div>
                 </div>
             </div>
@@ -318,17 +337,17 @@
         <div class="container">
             <!-- EDITAR AQUI: benefícios, diferenciais e ganhos percebidos. -->
             <div class="section-header">
-                <span class="section-label">Por que esse método?</span>
-                <h2 class="section-title">Benefícios que mudam o jogo</h2>
-                <p class="section-subtitle">Tudo que você ganha ao dominar a criação de páginas com IA e linguagem escrita.</p>
+                <span class="section-label">Por que funciona?</span>
+                <h2 class="section-title">Uma abordagem diferente de tudo que você já tentou</h2>
+                <p class="section-subtitle">Esse programa foi criado para quem tem vida real — e precisa de um resultado real.</p>
             </div>
             <div class="benefits-grid">
-                <div class="benefit-card fade-in"><div class="icon">⚡</div><h3>Velocidade absurda</h3><p>Crie uma página completa em minutos. O que levava semanas agora leva um café.</p></div>
-                <div class="benefit-card fade-in"><div class="icon">💰</div><h3>Menos custo para testar</h3><p>Crie páginas simples sem contratar alguém a cada nova ideia ou mudança pequena.</p></div>
-                <div class="benefit-card fade-in"><div class="icon">🎯</div><h3>Teste e otimize rápido</h3><p>Mudou de ideia? Altere com um prompt. Teste headlines, cores e ofertas na hora.</p></div>
-                <div class="benefit-card fade-in"><div class="icon">🧠</div><h3>Sem conhecimento técnico</h3><p>Não precisa saber HTML ou CSS. Se você sabe digitar, sabe criar páginas.</p></div>
-                <div class="benefit-card fade-in"><div class="icon">🔓</div><h3>Independência total</h3><p>Nunca mais dependa de programador ou agência. Você é dono do processo.</p></div>
-                <div class="benefit-card fade-in"><div class="icon">📈</div><h3>Escalabilidade</h3><p>Crie páginas para quantos produtos quiser. Cada produto, cada oferta, sua página.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🎯</div><h3>Plano feito pra você</h3><p>Nada genérico. Tudo adaptado à sua rotina, suas preferências e seu objetivo específico.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🤝</div><h3>Você tem alguém do seu lado</h3><p>Acompanhamento próximo que te mantém motivada e no caminho certo, mesmo nos dias difíceis.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🔁</div><h3>Ajuste constante</h3><p>O plano evolui com você. Semana a semana, o programa se adapta para continuar funcionando.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🧘</div><h3>Sem proibições radicais</h3><p>Alimentação saudável que cabe na sua vida social, no seu trabalho e nos momentos especiais.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">📱</div><h3>Tudo online, no seu tempo</h3><p>Sem precisar sair de casa. O acompanhamento acontece direto no seu celular, quando for melhor pra você.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🌱</div><h3>Resultado que se mantém</h3><p>A transformação vai muito além do peso. Você cria hábitos que duram — e não precisa recomeçar nunca mais.</p></div>
             </div>
         </div>
     </section>
@@ -338,28 +357,28 @@
             <!-- EDITAR AQUI: para quem é e para quem não é esta oferta. -->
             <div class="section-header">
                 <span class="section-label">Pra quem é?</span>
-                <h2 class="section-title">Este curso é pra você se...</h2>
+                <h2 class="section-title">Esse programa é pra você se...</h2>
             </div>
             <div class="who-grid">
                 <div class="who-col fade-in">
                     <h3>✅ É pra você que:</h3>
                     <ul class="who-list">
-                        <li><span class="check">✓</span> Quer lançar seu produto digital ou físico</li>
-                        <li><span class="check">✓</span> Não sabe programar e não quer aprender</li>
-                        <li><span class="check">✓</span> Está cansado de pagar caro por páginas simples</li>
-                        <li><span class="check">✓</span> Quer autonomia para criar e alterar páginas</li>
-                        <li><span class="check">✓</span> Precisa testar ofertas e iscas rapidamente</li>
-                        <li><span class="check">✓</span> Quer validar ideias sem investir fortunas</li>
+                        <li><span class="check">✓</span> Quer emagrecer com saúde e sem sofrimento</li>
+                        <li><span class="check">✓</span> Já tentou dieta e desistiu por não conseguir manter</li>
+                        <li><span class="check">✓</span> Precisa de um plano que encaixe na sua rotina real</li>
+                        <li><span class="check">✓</span> Quer parar de recomeçar toda semana</li>
+                        <li><span class="check">✓</span> Tem entre 28 e 45 anos e quer se sentir bem no próprio corpo</li>
+                        <li><span class="check">✓</span> Busca acompanhamento profissional próximo e acessível</li>
                     </ul>
                 </div>
                 <div class="who-col fade-in">
                     <h3>❌ Não é pra você se:</h3>
                     <ul class="who-list">
-                        <li><span class="cross">✗</span> Já é desenvolvedor web experiente</li>
-                        <li><span class="cross">✗</span> Acha que IA é "modinha" e não vai funcionar</li>
-                        <li><span class="cross">✗</span> Não está disposto a colocar a mão na massa</li>
-                        <li><span class="cross">✗</span> Espera resultado sem aplicar o método</li>
-                        <li><span class="cross">✗</span> Já usa ferramentas pagas e está satisfeito</li>
+                        <li><span class="cross">✗</span> Quer resultado sem nenhuma mudança de hábito</li>
+                        <li><span class="cross">✗</span> Não está disposta a seguir as orientações do plano</li>
+                        <li><span class="cross">✗</span> Busca dieta milagrosa de resultado rápido e insustentável</li>
+                        <li><span class="cross">✗</span> Já possui acompanhamento nutricional ativo e está satisfeita</li>
+                        <li><span class="cross">✗</span> Espera resultado sem ter qualquer comprometimento</li>
                     </ul>
                 </div>
             </div>
@@ -368,16 +387,16 @@
 
     <section class="testimonials-section">
         <div class="container">
-            <!-- EDITAR AQUI: depoimentos, avatares, nomes e cargos. -->
+            <!-- EDITAR AQUI: depoimentos, avatares, nomes e perfis. Troque pelos depoimentos reais das suas pacientes. -->
             <div class="section-header">
                 <span class="section-label">Resultados reais</span>
-                <h2 class="section-title">O que dizem nossos alunos</h2>
-                <p class="section-subtitle">Pessoas comuns que criaram páginas profissionais com IA.</p>
+                <h2 class="section-title">O que dizem nossas pacientes</h2>
+                <p class="section-subtitle">Mulheres que também achavam que não iam conseguir — e conseguiram.</p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Eu gastava R$800 com um freelancer. Com o curso, criei minha página de captura e a de vendas no mesmo dia. Zero código, só pedi pra IA e publiquei."</p><div class="testimonial-author"><div class="testimonial-avatar">CM</div><div><div class="testimonial-name">Camila M.</div><div class="testimonial-role">Infoprodutora</div></div></div></div>
-                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Não sei nada de programação. Em 20 minutos minha página de link/bio estava no ar. Já capturei 300 leads na primeira semana com a página de isca."</p><div class="testimonial-author"><div class="testimonial-avatar">RS</div><div><div class="testimonial-name">Rafael S.</div><div class="testimonial-role">Afiliado Digital</div></div></div></div>
-                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"O melhor é mudar quando quero. Testei 3 headlines na página de vendas em uma tarde. Minha conversão subiu 40%. Antes era impossível pra mim."</p><div class="testimonial-author"><div class="testimonial-avatar">AL</div><div><div class="testimonial-name">Ana L.</div><div class="testimonial-role">Nutricionista Digital</div></div></div></div>
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Já tinha tentado umas quatro dietas antes. Nenhuma durou mais de três semanas. Com o acompanhamento, finalmente entendi como comer direito sem largar tudo na primeira dificuldade."</p><div class="testimonial-author"><div class="testimonial-avatar">MF</div><div><div class="testimonial-name">Marina F.</div><div class="testimonial-role">Professora, 38 anos</div></div></div></div>
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"O que me surpreendeu foi a praticidade. O plano cabe na minha rotina de mãe e ainda consigo seguir. Perdi 6kg em dois meses sem me sentir privada de nada."</p><div class="testimonial-author"><div class="testimonial-avatar">CS</div><div><div class="testimonial-name">Camila S.</div><div class="testimonial-role">Mãe de dois filhos, 33 anos</div></div></div></div>
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Achei que não ia conseguir porque não tenho tempo para nada. Mas os ajustes semanais e o suporte fizeram eu me manter no caminho. Hoje me sinto muito mais leve."</p><div class="testimonial-author"><div class="testimonial-avatar">RL</div><div><div class="testimonial-name">Renata L.</div><div class="testimonial-role">Advogada, 42 anos</div></div></div></div>
             </div>
         </div>
     </section>
@@ -388,12 +407,12 @@
             <div class="section-header">
                 <span class="section-label">Bônus exclusivos</span>
                 <h2 class="section-title">Você ainda leva estes materiais de apoio</h2>
-                <p class="section-subtitle">Bônus simples que já existem no projeto e ajudam a colocar a aula em prática.</p>
+                <p class="section-subtitle">Materiais práticos para facilitar ainda mais sua jornada alimentar do dia a dia.</p>
             </div>
             <div class="bonus-cards">
-                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #1</span><h3>📋 Bônus de Prompts</h3><p>Modelos para pedir páginas de captura, vendas e revisões de clareza para a IA.</p><p class="bonus-value">Incluído no curso</p></div>
-                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #2</span><h3>🎨 Bônus de Templates</h3><p>Roteiros de estrutura para páginas de bio, captura, entrega, vendas e lista de espera.</p><p class="bonus-value">Incluído no curso</p></div>
-                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #3</span><h3>🚀 Bônus de Checklist</h3><p>Lista simples para revisar texto, links, formulário e publicação antes de divulgar.</p><p class="bonus-value">Incluído no curso</p></div>
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #1</span><h3>🛒 Checklist de Compras</h3><p>Lista completa para ir ao mercado com segurança, sem desperdício e sem cair nas tentações dos corredores.</p><p class="bonus-value">Incluído no programa</p></div>
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #2</span><h3>🥙 Guia de Lanches Práticos</h3><p>Sugestões de lanches saudáveis que cabem na bolsa, na gaveta do escritório e no seu dia a dia agitado.</p><p class="bonus-value">Incluído no programa</p></div>
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #3</span><h3>📅 Cardápio Completo de 7 Dias</h3><p>Um cardápio pronto para você começar a primeira semana com segurança, sem precisar pensar no que comer.</p><p class="bonus-value">Incluído no programa</p></div>
             </div>
         </div>
     </section>
@@ -403,27 +422,28 @@
             <!-- EDITAR AQUI: preço, ancoragem, itens incluídos e CTA da oferta. -->
             <div class="section-header">
                 <span class="section-label">Investimento</span>
-                <h2 class="section-title">Comece hoje por menos do que uma pizza</h2>
-                <p class="section-subtitle">Acesso ao curso, materiais de apoio e garantia total de 7 dias.</p>
+                <h2 class="section-title">Comece hoje o seu acompanhamento</h2>
+                <p class="section-subtitle">Plano personalizado, suporte semanal e todos os bônus. Consulte condições especiais no WhatsApp.</p>
             </div>
             <div class="pricing-card fade-in">
-                <span class="pricing-popular">🔥 Mais escolhido</span>
-                <p class="pricing-original">De <s>R$497</s> por apenas:</p>
-                <div class="pricing-price"><span class="currency">R$</span><span class="amount">67</span></div>
-                <p class="pricing-installments">ou 12x de R$6,74 no cartão</p>
+                <span class="pricing-popular">🌿 Mais escolhido</span>
+                <p class="pricing-original" style="font-size: 17px; color: var(--gray-light); margin-bottom: 12px;">Programa Nutrição Sem Complicação</p>
+                <div style="margin-bottom: 8px;">
+                    <span style="font-size: 22px; font-weight: 800; color: var(--primary);">Consulte condições no WhatsApp</span>
+                </div>
+                <p class="pricing-installments">Parcelamento disponível · Valor acessível para começar hoje</p>
                 <ul class="pricing-features">
-                    <li><span class="check">✓</span> Página de links para bio</li>
-                    <li><span class="check">✓</span> Página de captura</li>
-                    <li><span class="check">✓</span> Página de entrega</li>
-                    <li><span class="check">✓</span> Página de vendas</li>
-                    <li><span class="check">✓</span> Bônus: página de aula gratuita</li>
-                    <li><span class="check">✓</span> Bônus: página de lista de espera</li>
-                    <li><span class="check">✓</span> Bônus de prompts</li>
-                    <li><span class="check">✓</span> Bônus de templates</li>
-                    <li><span class="check">✓</span> Bônus de checklist</li>
+                    <li><span class="check">✓</span> Plano alimentar personalizado</li>
+                    <li><span class="check">✓</span> Acompanhamento online próximo</li>
+                    <li><span class="check">✓</span> Ajustes semanais do plano</li>
+                    <li><span class="check">✓</span> Suporte contínuo via WhatsApp</li>
+                    <li><span class="check">✓</span> Bônus: Checklist de compras saudáveis</li>
+                    <li><span class="check">✓</span> Bônus: Guia de lanches práticos</li>
+                    <li><span class="check">✓</span> Bônus: Cardápio completo de 7 dias</li>
                 </ul>
-                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="pricing-btn sales-link">QUERO CRIAR MINHA PÁGINA COM IA →</a>
-                <div class="pricing-guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Garantia incondicional de 7 dias</div>
+                <!-- PRESERVAR: botão com classe sales-link para o script funcionar. -->
+                <a href="https://wa.me/55SEUNUMERO" class="pricing-btn sales-link">QUERO COMEÇAR MEU ACOMPANHAMENTO →</a>
+                <div class="pricing-guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Atendimento humanizado e resposta rápida no WhatsApp</div>
             </div>
         </div>
     </section>
@@ -434,8 +454,8 @@
             <div class="guarantee-box fade-in">
                 <div class="guarantee-icon">🛡️</div>
                 <div class="guarantee-content">
-                    <h3>Garantia Incondicional de 7 Dias</h3>
-                    <p>Entre no curso, assista às aulas, crie sua primeira página. Se em 7 dias sentir que não é pra você, devolvemos 100%. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+                    <h3>Satisfação Garantida</h3>
+                    <p>Se você começar o programa e nos primeiros dias sentir que não é o que esperava, entre em contato e vamos resolver juntas — seja com ajuste no plano ou com o reembolso. Você não corre nenhum risco. O compromisso com o seu resultado é nosso.</p>
                 </div>
             </div>
         </div>
@@ -449,12 +469,13 @@
                 <h2 class="section-title">Perguntas & Respostas</h2>
                 <p class="section-subtitle">Tudo que você precisa saber antes de começar.</p>
             </div>
+            <!-- PRESERVAR: FAQ expansível para manter boa experiência no mobile. -->
             <div class="faq-list">
-                <div class="faq-item active"><button class="faq-question">Preciso saber programação?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Não! O curso foi feito para quem não sabe nada de código. Você vai digitar comandos em português simples e a IA faz o resto.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Preciso contratar alguém para alterar a página?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Não. A ideia do curso é dar autonomia para você pedir ajustes para a IA e adaptar a página com mais segurança.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Quanto tempo leva pra primeira página ficar pronta?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Seguindo o passo a passo, a maioria dos alunos publica a primeira página em 15 a 30 minutos.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Posso alterar as páginas depois?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Sim! Essa é a maior vantagem. Mude textos, cores, ofertas e seções com um novo comando de texto. Sem depender de ninguém.</p></div></div>
-                <div class="faq-item"><button class="faq-question">E se eu não gostar?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100%. Sem perguntas.</p></div></div>
+                <div class="faq-item active"><button class="faq-question">Já tentei muitas dietas e não consigo manter. Vai ser diferente?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Sim. A grande diferença desse programa é o acompanhamento próximo e os ajustes semanais. Quando algo não encaixa na sua rotina, a gente muda — sem você precisar desistir. Não é mais uma dieta genérica. É um plano feito pra você.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Não tenho tempo para cozinhar receitas elaboradas. Funciona assim mesmo?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Exatamente por isso o programa foi criado. O plano prioriza refeições simples, práticas e rápidas. Nada que exija horas na cozinha ou ingredientes difíceis de encontrar.</p></div></div>
+                <div class="faq-item"><button class="faq-question">O acompanhamento é presencial ou online?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>O acompanhamento é 100% online, pelo WhatsApp ou plataforma de atendimento. Você recebe atenção de qualquer lugar, no horário que for mais conveniente para você.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Como funciona o suporte semanal?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>A cada semana você reporta como foi — o que funcionou, o que foi difícil. A partir disso, o plano é ajustado para a semana seguinte. Você não fica parada se travar em algum ponto.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Como faço para começar?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>É só clicar no botão e falar com a gente pelo WhatsApp. Vamos entender o seu momento, explicar como funciona e dar o próximo passo juntas. Sem pressão e sem compromisso antes de você se sentir segura.</p></div></div>
             </div>
         </div>
     </section>
@@ -463,25 +484,26 @@
         <div class="container">
             <!-- EDITAR AQUI: chamada final, reforço da promessa e CTA de fechamento. -->
             <div class="final-cta-box fade-in">
-                <h2>Sua próxima página pode estar no ar <span class="highlight">em minutos</span></h2>
-                <p>Pare de depender de outras pessoas. Crie, publique e altere com IA — do seu jeito, no seu tempo, de graça.</p>
-                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">QUERO COMEÇAR AGORA <span class="arrow">→</span></a>
+                <h2>Sua vida mais leve começa com <span class="highlight">uma decisão simples</span></h2>
+                <p>Pare de recomeçar sozinha. Com acompanhamento próximo, um plano que cabe na sua rotina e suporte semanal, desta vez você vai chegar lá.</p>
+                <a href="https://wa.me/55SEUNUMERO" class="btn-primary sales-link">QUERO COMEÇAR MEU ACOMPANHAMENTO <span class="arrow">→</span></a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Página no Ar com IA — Todos os direitos reservados.</p>
+            <!-- EDITAR AQUI: nome da marca, links de política e contato. -->
+            <p>© 2025 Nutrição Sem Complicação — Todos os direitos reservados.</p>
             <p style="margin-top: 8px;"><a href="#">Termos de Uso</a> · <a href="#">Política de Privacidade</a> · <a href="#">Contato</a></p>
-            <p class="disclaimer">Este produto não garante a obtenção de resultados. Qualquer referência a resultados é baseada em experiências individuais e pode variar.</p>
+            <p class="disclaimer">Este programa não garante resultados individuais. Os resultados podem variar de acordo com cada pessoa. As referências a resultados são baseadas em experiências individuais de pacientes.</p>
         </div>
     </footer>
 
     <script>
         // PRESERVAR: troque apenas o valor do link. Mantenha o nome CHECKOUT_LINK e os elementos com class sales-link.
-        // EDITE AQUI: troque pelo link real da Hotmart quando estiver pronto.
-        const CHECKOUT_LINK = "https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI";
+        // EDITE AQUI: troque pelo link real do WhatsApp ou checkout quando estiver pronto.
+        const CHECKOUT_LINK = "https://wa.me/55SEUNUMERO";
 
         document.querySelectorAll('.sales-link').forEach(link => {
             link.href = CHECKOUT_LINK;
