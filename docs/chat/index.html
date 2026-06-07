@@ -1,1 +1,943 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Como posso te ajudar? — Nutrição Sem Complicação</title>
+    <meta
+      name="description"
+      content="Responda ao chat e descubra qual é o melhor próximo passo para começar a emagrecer com saúde e um acompanhamento que funciona de verdade."
+    >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #FDFAF6;
+        --surface: #FFFFFF;
+        --surface-2: #F4EFE8;
+        --ink: #2A2A2A;
+        --muted: #555555;
+        --soft: #888888;
+        --line: rgba(74, 124, 89, 0.13);
+        --brand: #6BAE7C;
+        --brand-dark: #4A7C59;
+        --accent: #4A7C59;
+        --accent-light: #7EAE8C;
+        --accent-soft: rgba(74, 124, 89, 0.1);
+        --bege: #EFE9DE;
+        --bege-dark: #DDD3C4;
+        --dark: #2A2A2A;
+        --shadow-glow: 0 0 44px rgba(74, 124, 89, 0.14);
+        --shadow-card: 0 8px 40px rgba(74, 124, 89, 0.1);
+      }
 
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      /* Orbs decorativos leves */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 90% 5%, rgba(107, 174, 124, 0.13), transparent 38rem),
+          radial-gradient(circle at 5% 90%, rgba(239, 233, 222, 0.5), transparent 28rem);
+      }
+
+      a { color: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+
+      /* ===== TOPBAR ===== */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: rgba(253, 250, 246, 0.9);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
+        width: min(100%, 1160px);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-weight: 900;
+        font-size: 0.97rem;
+        color: var(--ink);
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        flex: 0 0 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--brand));
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 800;
+        box-shadow: 0 0 24px rgba(74, 124, 89, 0.28);
+      }
+
+      .brand span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .topbar-link {
+        display: none;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--brand);
+        color: #ffffff;
+        font-size: 0.88rem;
+        font-weight: 800;
+        text-decoration: none;
+        padding: 10px 18px;
+        transition: background 0.2s ease;
+      }
+
+      .topbar-link:hover { background: var(--brand-dark); }
+
+      /* ===== MAIN ===== */
+      main {
+        width: min(100%, 1160px);
+        margin: 0 auto;
+        padding: 28px 18px 42px;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        display: grid;
+        gap: 16px;
+        padding: 24px 0 28px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        max-width: 720px;
+        margin-bottom: 0;
+        font-size: clamp(1.7rem, 6vw, 3.4rem);
+        line-height: 1.1;
+        letter-spacing: 0;
+        color: var(--ink);
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, var(--accent), var(--brand));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.65;
+        margin-bottom: 0;
+      }
+
+      /* ===== LAYOUT ===== */
+      .layout {
+        display: grid;
+        gap: 20px;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      /* ===== CHAT PANEL ===== */
+      .chat-panel {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+        min-height: 620px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .chat-head {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(74, 124, 89, 0.08), rgba(239, 233, 222, 0.3));
+      }
+
+      .chat-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .chat-title { display: grid; gap: 3px; }
+      .chat-title strong { font-size: 1.02rem; color: var(--ink); }
+
+      .chat-title span,
+      .progress-text,
+      .small {
+        color: var(--soft);
+        font-size: 0.88rem;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 28px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        background: rgba(107, 174, 124, 0.14);
+        color: var(--brand-dark);
+        font-size: 0.75rem;
+        font-weight: 800;
+        padding: 5px 12px;
+      }
+
+      .status-pill::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--brand);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.4); }
+      }
+
+      /* ===== PROGRESS ===== */
+      .progress-wrap { margin-top: 16px; }
+
+      .progress-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .progress-track {
+        height: 7px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(74, 124, 89, 0.1);
+      }
+
+      .progress-bar {
+        width: 0%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent), var(--brand));
+        transition: width 0.35s ease;
+      }
+
+      /* ===== CHAT BODY ===== */
+      .chat-body {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        min-height: 0;
+        max-height: 560px;
+        padding: 18px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .message {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        animation: messageIn 0.24s ease both;
+      }
+
+      .message.user { justify-content: flex-end; }
+
+      .avatar {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .bubble {
+        max-width: min(82%, 620px);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        border-top-left-radius: 6px;
+        background: var(--surface-2);
+        color: var(--muted);
+        padding: 12px 14px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .message.user .bubble {
+        border-color: rgba(74, 124, 89, 0.22);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 6px;
+        background: linear-gradient(135deg, rgba(107, 174, 124, 0.15), rgba(74, 124, 89, 0.1));
+        color: var(--ink);
+      }
+
+      .bubble strong { color: var(--ink); }
+
+      /* ===== TYPING ===== */
+      .typing {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 22px;
+      }
+
+      .typing span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-light);
+        animation: typingDot 0.9s infinite ease-in-out;
+      }
+
+      .typing span:nth-child(2) { animation-delay: 0.12s; }
+      .typing span:nth-child(3) { animation-delay: 0.24s; }
+
+      /* ===== CHAT ACTIONS ===== */
+      .chat-actions {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border-top: 1px solid var(--line);
+        background: rgba(244, 239, 232, 0.5);
+      }
+
+      .option-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .option-button {
+        width: 100%;
+        min-height: 50px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--surface);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        font-size: 0.93rem;
+        padding: 12px 14px;
+        text-align: left;
+        transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .option-button:hover,
+      .option-button:focus {
+        border-color: rgba(74, 124, 89, 0.4);
+        background: rgba(107, 174, 124, 0.07);
+        outline: 0;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(74, 124, 89, 0.1);
+      }
+
+      /* ===== FINAL ACTIONS ===== */
+      .final-actions {
+        display: none;
+        gap: 10px;
+      }
+
+      .cta, .ghost {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 52px;
+        border-radius: 10px;
+        font-weight: 900;
+        font-family: inherit;
+        font-size: 0.97rem;
+        text-align: center;
+        text-decoration: none;
+        padding: 13px 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .cta {
+        background: var(--brand);
+        color: #ffffff;
+        box-shadow: 0 6px 24px rgba(74, 124, 89, 0.25);
+      }
+
+      .cta:hover, .cta:focus {
+        background: var(--brand-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(74, 124, 89, 0.38);
+        outline: none;
+      }
+
+      .ghost {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .ghost:hover, .ghost:focus {
+        border-color: rgba(74, 124, 89, 0.3);
+        background: rgba(107, 174, 124, 0.06);
+        outline: none;
+      }
+
+      /* ===== RESTART ===== */
+      .restart {
+        width: fit-content;
+        min-height: 42px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--accent);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 8px 0;
+        text-align: left;
+        opacity: 0.75;
+        transition: opacity 0.2s ease;
+      }
+
+      .restart:hover { opacity: 1; }
+
+      /* ===== ANIMATIONS ===== */
+      @keyframes typingDot {
+        0%, 80%, 100% { opacity: 0.35; transform: translateY(0); }
+        40%           { opacity: 1;    transform: translateY(-3px); }
+      }
+
+      @keyframes messageIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (min-width: 680px) {
+        .topbar-link { display: inline-flex; }
+
+        main { padding: 44px 24px 58px; }
+
+        .hero { padding-top: 42px; }
+
+        .option-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .final-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .final-actions .cta {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (min-width: 980px) {
+        .hero {
+          max-width: 920px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+        }
+        .hero-copy {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      @media (max-width: 380px) {
+        h1 { font-size: 1.55rem; }
+        .option-button { font-size: 0.87rem; }
+        .cta, .ghost { font-size: 0.88rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- EDITAR AQUI: nome da marca, link do topo e CTA da topbar. -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Nutrição Sem Complicação">
+          <span class="brand-mark" aria-hidden="true">NS</span>
+          <span>Nutrição Sem Complicação</span>
+        </div>
+        <a class="topbar-link" href="../vendas/">Quero começar</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="titulo-chatbot">
+        <div>
+          <!-- EDITAR AQUI: headline e subtítulo conforme o objetivo do chatbot. -->
+          <h1 id="titulo-chatbot">Descubra qual é o seu <span class="highlight">melhor próximo passo</span></h1>
+          <p class="hero-copy">
+            Responda ao chat e veja qual caminho faz mais sentido para você começar a emagrecer com saúde — sem dieta maluca e com acompanhamento real.
+          </p>
+        </div>
+      </section>
+
+      <section class="layout" aria-label="Chat de orientação nutricional">
+        <div class="chat-panel">
+
+          <div class="chat-head">
+            <div class="chat-title-row">
+              <!-- EDITAR AQUI: nome do assistente e frase de apoio. -->
+              <div class="chat-title">
+                <strong>Assistente de acompanhamento</strong>
+                <span>Conversa rápida para entender como posso te ajudar.</span>
+              </div>
+              <span class="status-pill">Online</span>
+            </div>
+
+            <!-- PRESERVAR: barra de progresso e labels. -->
+            <div class="progress-wrap" aria-label="Progresso do chat">
+              <div class="progress-meta">
+                <span class="progress-text" id="progress-label">Etapa 1 de 7</span>
+                <span class="progress-text" id="progress-percent">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-body" id="chat-body" aria-live="polite"></div>
+
+          <div class="chat-actions">
+            <div class="option-grid" id="option-grid"></div>
+
+            <!-- EDITAR AQUI: textos dos CTAs finais. -->
+            <!-- PRESERVAR: ids dos elementos — são usados pelo script para injetar os links. -->
+            <div class="final-actions" id="final-actions">
+              <a class="cta" id="course-link" href="../vendas/">Quero falar com a nutricionista</a>
+              <a class="ghost" id="whatsapp-link" href="https://wa.me/55SEUNUMERO">Falar no WhatsApp</a>
+              <a class="ghost" id="class-link" href="../aula-gratuita/">Assistir aula gratuita</a>
+            </div>
+
+            <button class="restart" id="restart-button" type="button">Refazer o chat</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // EDITE AQUI: troque pelos links reais do seu negócio.
+      // PRESERVAR: mantenha os nomes SALES_PAGE_URL, FREE_CLASS_URL e WHATSAPP_URL.
+      const SALES_PAGE_URL  = "../vendas/";
+      const FREE_CLASS_URL  = "../aula-gratuita/";
+      const WHATSAPP_URL    = "https://wa.me/55SEUNUMERO";
+
+      // EDITAR AQUI: adapte perguntas, opções e fluxo ao seu negócio.
+      // PRESERVAR: mantenha a estrutura do array, os ids e o fluxo de 1 pergunta por vez.
+      const questions = [
+        {
+          id: "situacao",
+          text: "Antes de começar, me conta: qual é a sua situação agora?",
+          options: [
+            "Quero emagrecer mas não sei por onde começar",
+            "Já tentei dieta mas desisto sempre",
+            "Emagreço e depois recupero o peso",
+            "Não tenho tempo para me cuidar"
+          ]
+        },
+        {
+          id: "tentativa",
+          text: "Você já tentou algum tipo de dieta ou reeducação alimentar antes?",
+          options: [
+            "Sim, várias vezes mas nunca mantive",
+            "Sim, mas o plano era impossível de seguir",
+            "Tentei, mas não tive orientação profissional",
+            "Nunca tentei de verdade"
+          ]
+        },
+        {
+          id: "trava",
+          text: "O que mais te trava para conseguir manter uma alimentação saudável?",
+          options: [
+            "Falta de tempo na rotina",
+            "Não sei o que comer de verdade",
+            "Tenho muita ansiedade com comida",
+            "Desisto quando algo sai do plano"
+          ]
+        },
+        {
+          id: "objetivo",
+          text: "Qual é o seu principal objetivo agora?",
+          options: [
+            "Emagrecer com saúde sem sofrimento",
+            "Criar uma rotina alimentar possível",
+            "Parar de recomeçar toda semana",
+            "Ter acompanhamento profissional"
+          ]
+        },
+        {
+          id: "acompanhamento",
+          text: "Você já teve acompanhamento nutricional antes?",
+          options: [
+            "Não, nunca tive",
+            "Sim, mas não continuei",
+            "Sim, mas era muito caro",
+            "Sim, mas não se encaixava na minha rotina"
+          ]
+        },
+        {
+          id: "formato",
+          text: "Como prefere receber o acompanhamento?",
+          options: [
+            "100% online, no meu tempo",
+            "Com suporte pelo WhatsApp",
+            "Com plano alimentar personalizado",
+            "Tudo junto, online e com suporte"
+          ]
+        },
+        {
+          id: "conversao",
+          text: "Ótimo. Qual é o melhor próximo passo para você agora?",
+          options: [
+            "Quero conhecer o programa completo",
+            "Quero assistir a aula gratuita primeiro",
+            "Prefiro falar direto no WhatsApp"
+          ]
+        }
+      ];
+
+      // PRESERVAR: seletores dos elementos principais do chat.
+      const chatBody       = document.querySelector("#chat-body");
+      const optionGrid     = document.querySelector("#option-grid");
+      const finalActions   = document.querySelector("#final-actions");
+      const progressLabel  = document.querySelector("#progress-label");
+      const progressPercent = document.querySelector("#progress-percent");
+      const progressBar    = document.querySelector("#progress-bar");
+      const restartButton  = document.querySelector("#restart-button");
+      const courseLink     = document.querySelector("#course-link");
+      const whatsappLink   = document.querySelector("#whatsapp-link");
+      const classLink      = document.querySelector("#class-link");
+
+      let currentQuestion = 0;
+      let answers = {};
+      let locked = false;
+
+      // PRESERVAR: conecta botões finais às constantes de link.
+      courseLink.href   = SALES_PAGE_URL;
+      whatsappLink.href = WHATSAPP_URL;
+      classLink.href    = FREE_CLASS_URL;
+
+      // PRESERVAR: função que adiciona mensagens ao chat.
+      function addMessage(text, type) {
+        const message = document.createElement("div");
+        message.className = `message ${type || "bot"}`;
+
+        if (type !== "user") {
+          const avatar = document.createElement("div");
+          avatar.className = "avatar";
+          avatar.textContent = "NS";
+          message.appendChild(avatar);
+        }
+
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerHTML = text;
+        message.appendChild(bubble);
+
+        chatBody.appendChild(message);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      // PRESERVAR: função de digitação animada.
+      function showTyping(callback) {
+        const message = document.createElement("div");
+        message.className = "message";
+        message.id = "typing-message";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.textContent = "NS";
+
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+
+        message.appendChild(avatar);
+        message.appendChild(bubble);
+        chatBody.appendChild(message);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        window.setTimeout(function () {
+          message.remove();
+          callback();
+        }, 420);
+      }
+
+      // PRESERVAR: atualiza barra de progresso e label de etapa.
+      function updateProgress() {
+        const answered = Object.keys(answers).length;
+        const total    = questions.length;
+        const percent  = Math.round((answered / total) * 100);
+        const displayQuestion = Math.min(currentQuestion + 1, total);
+
+        progressLabel.textContent   = answered === total ? "Chat concluído" : `Etapa ${displayQuestion} de ${total}`;
+        progressPercent.textContent = `${percent}%`;
+        progressBar.style.width     = `${percent}%`;
+      }
+
+      // PRESERVAR: renderiza cada pergunta em sequência.
+      function renderQuestion() {
+        locked = false;
+        optionGrid.innerHTML = "";
+        finalActions.style.display = "none";
+
+        if (currentQuestion >= questions.length) {
+          renderFinalOffer();
+          return;
+        }
+
+        const question = questions[currentQuestion];
+        updateProgress();
+
+        showTyping(function () {
+          addMessage(`<strong>${question.text}</strong>`);
+
+          question.options.forEach(function (option) {
+            const button = document.createElement("button");
+            button.className = "option-button";
+            button.type = "button";
+            button.textContent = option;
+            button.addEventListener("click", function () {
+              chooseAnswer(question, option);
+            });
+            optionGrid.appendChild(button);
+          });
+        });
+      }
+
+      // PRESERVAR: registra resposta, avança pergunta e exibe mensagem de ponte.
+      function chooseAnswer(question, option) {
+        if (locked) return;
+
+        locked = true;
+        answers[question.id] = option;
+        optionGrid.innerHTML = "";
+        addMessage(option, "user");
+        currentQuestion += 1;
+        updateProgress();
+
+        const bridgeMessage = getBridgeMessage(question, option);
+
+        if (!bridgeMessage) {
+          window.setTimeout(renderQuestion, 260);
+          return;
+        }
+
+        showTyping(function () {
+          addMessage(bridgeMessage);
+          window.setTimeout(renderQuestion, 420);
+        });
+      }
+
+      function normalizeText(text) {
+        return String(text || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      }
+
+      // EDITAR AQUI: adapte os textos das mensagens de ponte para o tom do seu negócio.
+      // PRESERVAR: mantenha a estrutura da função e os retornos de string vazia.
+      function getBridgeMessage(question, option) {
+        const optionKey = normalizeText(option);
+
+        if (question.id === "situacao") {
+          if (optionKey.includes("nao sei")) {
+            return "Começar sem direção é mais comum do que parece. A boa notícia é que um plano simples e personalizado já muda tudo desde a primeira semana.";
+          }
+          if (optionKey.includes("desisto")) {
+            return "Desistir não é falta de força de vontade — é sinal de que o plano não foi feito para a sua rotina real. É exatamente isso que mudamos aqui.";
+          }
+          if (optionKey.includes("recupero")) {
+            return "Efeito sanfona é muito frustrante. Ele acontece quando a dieta é temporária e não vira estilo de vida. Com acompanhamento contínuo, isso muda.";
+          }
+          if (optionKey.includes("tempo")) {
+            return "Falta de tempo é uma das principais barreiras. Por isso o programa foi criado para encaixar na vida real — sem receitas complexas e sem horas na cozinha.";
+          }
+          return "Entendido. Vou te ajudar a encontrar o melhor caminho daqui.";
+        }
+
+        if (question.id === "tentativa") {
+          if (optionKey.includes("nunca mantive")) {
+            return "Manter o resultado é a parte mais difícil quando você está sozinha. Com acompanhamento semanal, fica muito mais fácil não desistir.";
+          }
+          if (optionKey.includes("impossivel")) {
+            return "Dieta impossível de seguir é a principal causa de abandono. Um plano bom é aquele que cabe na sua vida, não o contrário.";
+          }
+          if (optionKey.includes("orientacao")) {
+            return "Sem orientação profissional, é difícil saber se você está no caminho certo. O acompanhamento faz toda a diferença nos ajustes semana a semana.";
+          }
+          return "Não tem problema. Muita gente começa assim — e um primeiro passo guiado costuma ser o mais importante.";
+        }
+
+        if (question.id === "trava") {
+          if (optionKey.includes("tempo")) {
+            return "Tempo é o recurso mais escasso. O programa foi criado para quem tem agenda cheia — refeições simples, rápidas e sem complicar.";
+          }
+          if (optionKey.includes("comer")) {
+            return "Não saber o que comer é muito comum, mesmo quem tenta se informar. Um plano personalizado tira essa dúvida de vez.";
+          }
+          if (optionKey.includes("ansiedade")) {
+            return "Ansiedade com comida precisa de atenção e acolhimento, não de dieta rígida. O acompanhamento trabalha isso com leveza.";
+          }
+          if (optionKey.includes("desisto")) {
+            return "Desistir quando algo sai do plano é o sinal mais claro de que você precisa de suporte e ajustes — e é exatamente isso que o programa oferece.";
+          }
+          return "Entendido. Esse obstáculo é mais comum do que você imagina.";
+        }
+
+        if (question.id === "objetivo") {
+          if (optionKey.includes("sofrimento")) {
+            return "Emagrecer com leveza é possível. Não precisa ser sofrimento para ser resultado.";
+          }
+          if (optionKey.includes("rotina")) {
+            return "Uma rotina alimentar possível é a base de tudo. Quando o plano encaixa na sua vida, ele vira hábito — e resultado.";
+          }
+          if (optionKey.includes("recomecar")) {
+            return "Parar de recomeçar é a transformação mais profunda. E começa com um acompanhamento que não te abandona quando algo sai do plano.";
+          }
+          return "Ter acompanhamento profissional muda tudo: você não fica mais sozinha com as dúvidas e dificuldades do dia a dia.";
+        }
+
+        if (question.id === "acompanhamento") {
+          if (optionKey.includes("nunca")) {
+            return "Então essa pode ser a primeira vez que você tem um plano realmente feito para você. Faz diferença.";
+          }
+          if (optionKey.includes("nao continuei") || optionKey.includes("caro")) {
+            return "Continuidade é o que falta na maioria dos acompanhamentos. Aqui o suporte é contínuo e feito para ser acessível.";
+          }
+          return "Quando o acompanhamento não encaixa na rotina, é impossível manter. Trabalhamos diferente: o plano se adapta à sua vida.";
+        }
+
+        if (question.id === "formato") {
+          return "Ótimo. Vou te mostrar as opções para você continuar no seu ritmo.";
+        }
+
+        if (question.id === "conversao") {
+          return "Perfeito. Vou deixar os próximos passos abaixo para você escolher como quer continuar agora.";
+        }
+
+        return "";
+      }
+
+      // PRESERVAR: funções de resumo final.
+      function getPageRecommendation() {
+        const situacao = normalizeText(answers.situacao || "");
+        const objetivo = normalizeText(answers.objetivo || "");
+
+        if (objetivo.includes("acompanhamento") || situacao.includes("desisto")) return "acompanhamento nutricional personalizado";
+        if (objetivo.includes("rotina")) return "plano alimentar adaptado à sua rotina";
+        return "programa de reeducação alimentar com suporte semanal";
+      }
+
+      function getMainPain() {
+        const trava = normalizeText(answers.trava || "");
+
+        if (trava.includes("tempo"))     return "encaixar alimentação saudável na rotina agitada";
+        if (trava.includes("comer"))     return "saber o que comer de verdade sem pesquisa interminável";
+        if (trava.includes("ansiedade")) return "ter uma relação mais tranquila com a comida";
+        if (trava.includes("desisto"))   return "parar de recomeçar e manter o resultado";
+        return "ter clareza no próximo passo";
+      }
+
+      function getLeadPlan() {
+        const formato = normalizeText(answers.formato || "");
+
+        if (formato.includes("whatsapp"))       return "receber suporte direto pelo WhatsApp";
+        if (formato.includes("plano"))          return "ter um plano alimentar personalizado desde o início";
+        if (formato.includes("tudo junto"))     return "combinar plano alimentar, suporte online e ajustes semanais";
+        return "acompanhar no próprio tempo com suporte online";
+      }
+
+      // EDITAR AQUI: ajuste o texto do resumo final para o posicionamento do seu negócio.
+      // PRESERVAR: mantenha o fluxo de resumo e exibição dos CTAs finais.
+      function renderFinalOffer() {
+        const page     = getPageRecommendation();
+        const pain     = getMainPain();
+        const leadPlan = getLeadPlan();
+
+        optionGrid.innerHTML = "";
+        finalActions.style.display = "grid";
+        updateProgress();
+
+        showTyping(function () {
+          addMessage(
+            `<strong>Resumo do seu chat:</strong><br>` +
+            `Você precisa de um ${page}, quer ${pain} e pode ${leadPlan}. ` +
+            `O Programa Nutrição Sem Complicação foi criado para esse caminho: ` +
+            `um plano alimentar feito para a sua rotina real, com acompanhamento próximo e ajustes semanais para você não precisar recomeçar nunca mais.`
+          );
+
+          addMessage(
+            `<strong>Qual é o seu próximo passo agora?</strong><br>` +
+            `Escolha uma das opções abaixo para continuar.`
+          );
+        });
+      }
+
+      // PRESERVAR: função de reinício — limpa respostas, progresso e histórico do chat.
+      function restartChat() {
+        currentQuestion = 0;
+        answers         = {};
+        locked          = false;
+        chatBody.innerHTML     = "";
+        optionGrid.innerHTML   = "";
+        finalActions.style.display = "none";
+        updateProgress();
+        // EDITAR AQUI: mensagem de abertura do chat.
+        addMessage("Oi! Vou te fazer algumas perguntas rápidas para entender sua situação e te mostrar o melhor caminho para emagrecer com saúde e leveza. Pode ser?");
+        renderQuestion();
+      }
+
+      restartButton.addEventListener("click", restartChat);
+
+      restartChat();
+    </script>
+  </body>
+</html>
