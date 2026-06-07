@@ -1,1 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Espera | Programa Nutrição Sem Complicação</title>
+<meta name="description" content="Entre na lista de espera da próxima turma do Programa Nutrição Sem Complicação e receba prioridade nas vagas e condições especiais.">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#4D7C5B;
+    --primary-light:#6F9A7B;
+    --primary-soft:#EAF3EB;
+    --accent:#8BAF93;
+    --beige:#F8F3EA;
+    --white:#FFFFFF;
+    --text:#2F3A31;
+    --text-soft:#5F6A62;
+    --border:#DCE7DD;
+    --shadow:0 12px 35px rgba(77,124,91,.12);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#FDFCF8 0%,#F8F3EA 100%);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+.bg-decoration{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.bg-decoration span{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.25;
+}
+
+.bg-decoration span:nth-child(1){
+    width:320px;
+    height:320px;
+    background:#CFE3D2;
+    top:-80px;
+    right:-100px;
+}
+
+.bg-decoration span:nth-child(2){
+    width:260px;
+    height:260px;
+    background:#E7DCC6;
+    bottom:-80px;
+    left:-80px;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(77,124,91,.08);
+}
+
+.nav .container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:16px 20px;
+}
+
+.nav-logo{
+    font-size:1rem;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.hero{
+    position:relative;
+    z-index:1;
+    padding:60px 0;
+}
+
+.page{
+    display:grid;
+    gap:40px;
+    align-items:center;
+}
+
+.section-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--primary-soft);
+    color:var(--primary);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-size:clamp(2rem,5vw,3.4rem);
+    line-height:1.15;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.hero-sub{
+    font-size:1.08rem;
+    color:var(--text-soft);
+    margin-bottom:30px;
+    max-width:650px;
+}
+
+.highlight{
+    color:var(--primary);
+    font-weight:700;
+}
+
+.steps-grid{
+    display:grid;
+    gap:16px;
+}
+
+.step-item{
+    background:rgba(255,255,255,.8);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition:.25s ease;
+    box-shadow:0 4px 15px rgba(0,0,0,.03);
+}
+
+.step-item:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.icon{
+    width:38px;
+    height:38px;
+    flex-shrink:0;
+    border-radius:12px;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+}
+
+.step-item p{
+    color:var(--text-soft);
+    font-size:.98rem;
+}
+
+.form-panel{
+    background:#fff;
+    border-radius:24px;
+    padding:28px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.form-panel h2{
+    font-size:1.8rem;
+    margin-bottom:10px;
+    color:var(--text);
+}
+
+.form-panel > p{
+    color:var(--text-soft);
+    margin-bottom:24px;
+}
+
+form{
+    display:grid;
+    gap:16px;
+}
+
+label{
+    display:grid;
+    gap:8px;
+    font-weight:600;
+    color:var(--text);
+}
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#fff;
+    font:inherit;
+    color:var(--text);
+    transition:.25s ease;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(77,124,91,.12);
+}
+
+.btn-primary{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    border-radius:14px;
+    padding:18px;
+    font-size:1rem;
+    font-weight:800;
+    color:#fff;
+    background:linear-gradient(135deg,var(--primary),var(--primary-light));
+    transition:.25s ease;
+    box-shadow:0 12px 25px rgba(77,124,91,.22);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 32px rgba(77,124,91,.28);
+}
+
+.btn-primary:disabled{
+    opacity:.7;
+    cursor:wait;
+}
+
+.notice{
+    min-height:24px;
+    font-size:.95rem;
+}
+
+.notice.success{
+    color:#0F8F43;
+}
+
+.notice.error{
+    color:#D92D20;
+}
+
+.privacy{
+    margin-top:14px;
+    font-size:.88rem;
+    color:var(--text-soft);
+}
+
+.footer{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--text-soft);
+    font-size:.85rem;
+}
+
+.fade-in{
+    opacity:0;
+    transform:translateY(20px);
+    transition:.6s ease;
+}
+
+.fade-in.visible{
+    opacity:1;
+    transform:none;
+}
+
+@media(min-width:860px){
+    .page{
+        grid-template-columns:1.1fr .85fr;
+    }
+
+    .hero{
+        padding:90px 0;
+    }
+}
+
+@media(max-width:480px){
+
+    .hero{
+        padding:40px 0;
+    }
+
+    .form-panel{
+        padding:22px;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decoration">
+    <span></span>
+    <span></span>
+</div>
+
+<nav class="nav">
+    <div class="container">
+        <div class="nav-logo">🌿 Programa Nutrição Sem Complicação</div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+
+        <div class="page">
+
+            <div class="intro fade-in">
+
+                <span class="section-label">Lista de Espera Oficial</span>
+
+                <h1 class="section-title">
+                    A próxima turma do <span class="highlight">Programa Nutrição Sem Complicação</span> está chegando.
+                </h1>
+
+                <p class="hero-sub">
+                    Entre agora na lista de espera e seja uma das primeiras mulheres a receber todas as informações da nova turma, além de acesso antecipado às vagas e possíveis condições especiais de entrada.
+                </p>
+
+                <div class="steps-grid">
+
+                    <div class="step-item">
+                        <div class="icon">1</div>
+                        <p>
+                            Cadastre seus dados para demonstrar interesse na próxima turma.
+                        </p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="icon">2</div>
+                        <p>
+                            Receba informações em primeira mão sobre abertura das inscrições, conteúdo e benefícios do programa.
+                        </p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="icon">3</div>
+                        <p>
+                            Tenha prioridade quando as vagas forem liberadas e fique por dentro de condições especiais de entrada.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-panel fade-in">
+
+                <h2 id="titulo-formulario">Garanta sua prioridade</h2>
+
+                <p>
+                    Preencha seus dados para entrar na lista de espera da próxima turma.
+                </p>
+
+                <form
+                    id="waitlist-form"
+                    action="https://script.google.com/macros/s/AKfycbwFdKypKdWiTZthj2UFftjcHoaxvW_TfQde4GTML0wMZzyD8S7zIEt54J-QhaPFfdd4/exec"
+                >
+
+                    <label>
+                        Nome
+                        <input
+                            id="nome"
+                            name="nome"
+                            type="text"
+                            autocomplete="name"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Email
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        WhatsApp
+                        <input
+                            id="whatsapp"
+                            name="whatsapp"
+                            type="tel"
+                            autocomplete="tel"
+                        >
+                    </label>
+
+                    <input
+                        type="hidden"
+                        id="interesse"
+                        name="interesse"
+                        value="Nova turma Programa Nutrição Sem Complicação"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="origem"
+                        name="origem"
+                        value="lista-espera"
+                    >
+
+                    <button
+                        id="submit-button"
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Quero entrar na lista de espera
+                    </button>
+
+                    <p
+                        id="form-message"
+                        class="notice"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+                <p class="privacy">
+                    Seus dados serão usados apenas para comunicação relacionada à abertura da próxima turma e informações do programa.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <p>
+        © 2026 Programa Nutrição Sem Complicação — Todos os direitos reservados.
+    </p>
+</footer>
+
+<script>
+/* ===== CONFIGURAÇÃO PRESERVADA ===== */
+
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwFdKypKdWiTZthj2UFftjcHoaxvW_TfQde4GTML0wMZzyD8S7zIEt54J-QhaPFfdd4/exec";
+
+const form = document.querySelector("#waitlist-form");
+const button = document.querySelector("#submit-button");
+const message = document.querySelector("#form-message");
+
+function setMessage(text, type) {
+    message.textContent = text;
+    message.className = type ? `notice ${type}` : "notice";
+}
+
+form.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const data = new FormData(form);
+
+    data.append("pagina", window.location.pathname);
+
+    button.disabled = true;
+    button.textContent = "Enviando...";
+    setMessage("Registrando sua participação na lista...", "");
+
+    try {
+
+        await fetch(APPS_SCRIPT_URL,{
+            method:"POST",
+            body:data,
+            mode:"no-cors"
+        });
+
+        form.reset();
+
+        setMessage(
+            "Pronto! Você entrou na lista de espera e será avisada sobre a próxima turma.",
+            "success"
+        );
+
+        button.disabled = false;
+        button.textContent = "Quero entrar na lista de espera";
+
+    } catch(error){
+
+        setMessage(
+            "Não foi possível concluir o envio agora. Tente novamente em instantes.",
+            "error"
+        );
+
+        button.disabled = false;
+        button.textContent = "Quero entrar na lista de espera";
+    }
+});
+
+/* ===== ANIMAÇÕES LEVES ===== */
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+},{
+    threshold:0.1
+});
+
+document.querySelectorAll(".fade-in")
+.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
